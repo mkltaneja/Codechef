@@ -42,7 +42,71 @@ int main()
         }
         if(f)
             cout << "Yes\n";
-        else 
+        else
             cout<<"No\n";
     }
+}
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    // your code goes here
+    int t;
+    bool flag;
+    cin >> t;
+    for (int a = 0; a < t; a++)
+    {
+        int n;
+        cin >> n;
+        flag = true;
+        vector<int> arr(n, 0);
+        vector<int> count(3, 0);
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i];
+        }
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] == 5)
+            {
+                count[0]++;
+            }
+            else if (arr[i] == 10)
+            {
+                count[1]++;
+                if (count[0] >= 1)
+                    count[0]--;
+                else
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            else if (arr[i] == 15)
+            {
+                count[2]++;
+                if (count[0] >= 2)
+                    count[0] -= 2;
+                else if (count[1] >= 1)
+                    count[1]--;
+                else
+                {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        if (flag == false)
+        {
+            cout << "NO" << endl;
+        }
+        else
+        {
+            cout << "YES" << endl;
+        }
+    }
+    return 0;
 }
